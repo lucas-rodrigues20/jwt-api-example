@@ -1,0 +1,31 @@
+[{
+  "id": 1,
+  "first_name": "Mickey",
+  "last_name": "Baudone",
+  "email": "mbaudone0@auda.org.au",
+  "password": "a8hQpLZPN9"
+}, {
+  "id": 2,
+  "first_name": "Creigh",
+  "last_name": "Ollington",
+  "email": "collington1@salon.com",
+  "password": "4SdBdS"
+}, {
+  "id": 3,
+  "first_name": "Mikel",
+  "last_name": "Kinkaid",
+  "email": "mkinkaid2@latimes.com",
+  "password": "DZ7gWG"
+}, {
+  "id": 4,
+  "first_name": "Carlita",
+  "last_name": "Blose",
+  "email": "cblose3@springer.com",
+  "password": "LI9JDs6"
+}, {
+  "id": 5,
+  "first_name": "Jerrylee",
+  "last_name": "Temby",
+  "email": "jtemby4@pbs.org",
+  "password": "VQv35n"
+}]
