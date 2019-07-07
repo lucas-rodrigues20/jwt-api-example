@@ -21,3 +21,14 @@ exports.getOne = (req, res, next) => {
     .catch(err => next(err));
 
 }
+
+exports.authenticate = (req, res, next) => {
+
+  const { email, password } = req.body;
+
+  userModel
+    .authenticate(email, password)
+    .then(result => res.json(result))
+    .catch(err => next(err));
+
+}

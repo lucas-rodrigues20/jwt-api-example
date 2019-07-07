@@ -1,4 +1,5 @@
 const users = require('./users.json');
+const jwt = require('jsonwebtoken');
 
 exports.findAll = () => {
 
@@ -31,3 +32,28 @@ exports.findOneById = (id) => {
 
   });
 };
+
+exports.authenticate = (email, password) => {
+  
+  return new Promise((resolve, reject) => {
+    
+    const user = users.find(u => u.email === email && u.password === password);
+    
+    setTimeout(() => {
+  
+      if (!user) {
+        const err = new Error("Username or password is incorrect.");
+        err.status = 400;
+    
+        return reject(err);
+      }
+    
+      const token = jwt.sign({ user_id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRATION });
+      delete user.password;
+    
+      resolve({ user, token });
+  
+    }, 2000);
+
+  });
+}
