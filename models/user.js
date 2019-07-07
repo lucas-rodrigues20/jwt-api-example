@@ -48,7 +48,7 @@ exports.authenticate = (email, password) => {
         return reject(err);
       }
     
-      const token = jwt.sign({ user_id: user.id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRATION });
+      const token = jwt.sign({ user_id: user.id, permissions: [user.role] }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRATION });
       delete user.password;
     
       resolve({ user, token });
