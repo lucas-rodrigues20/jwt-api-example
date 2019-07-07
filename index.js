@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 require('dotenv').config();
 
 const errorHandlers = require('./middlewares/errors');
@@ -9,7 +10,9 @@ const api = "/api/v1";
 
 const app = express();
 
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(jwtAuth.authentication(api));
 
 app.get('/', (req, res) => {
