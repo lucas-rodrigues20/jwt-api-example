@@ -38,7 +38,7 @@ exports.authenticate = (email, password) => {
   return new Promise((resolve, reject) => {
     
     const user = users.find(u => u.email === email && u.password === password);
-    
+
     setTimeout(() => {
   
       if (!user) {
@@ -49,9 +49,11 @@ exports.authenticate = (email, password) => {
       }
     
       const token = jwt.sign({ user_id: user.id, permissions: [user.role] }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRATION });
-      delete user.password;
+
+      const user_clone = { ...user };
+      delete user_clone.password;
     
-      resolve({ user, token });
+      resolve({ user: user_clone, token: token });
   
     }, 2000);
 

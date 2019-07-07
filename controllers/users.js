@@ -28,10 +28,10 @@ exports.getOne = (req, res, next) => {
 
 exports.authenticate = (req, res, next) => {
 
-  const { email, password } = req.body;
+  const { username, password } = req.body;
 
   userModel
-    .authenticate(email, password)
+    .authenticate(username, password)
     .then(result => res.json(result))
     .catch(err => next(err));
 
