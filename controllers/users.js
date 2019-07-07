@@ -2,6 +2,8 @@ const userModel = require('../models/user');
 
 exports.getAll = (req, res) => {
 
+  logUser(req);
+
   userModel
     .findAll()
     .then(users => res.json(users));
@@ -9,6 +11,8 @@ exports.getAll = (req, res) => {
 }
 
 exports.getOne = (req, res, next) => {
+
+  logUser(req);
 
   const id = parseInt(req.params.id);
 
@@ -31,4 +35,8 @@ exports.authenticate = (req, res, next) => {
     .then(result => res.json(result))
     .catch(err => next(err));
 
+}
+
+const logUser = function(request) {
+  console.log(`Request Made by User: ${request.user.user_id}`);
 }

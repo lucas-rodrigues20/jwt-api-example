@@ -3,12 +3,14 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const errorHandlers = require('./middlewares/errors');
+const jwtAuth = require('./middlewares/jwt');
 
 const api = "/api/v1";
 
 const app = express();
 
 app.use(bodyParser.json());
+app.use(jwtAuth.authentication(api));
 
 app.get('/', (req, res) => {
   res.json({ status: 'ok' });
